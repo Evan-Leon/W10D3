@@ -12,21 +12,17 @@ class Tile extends React.Component {
             bombed: this.props.tile.bombed,
             pos: this.props.tile.pos
         }
-        this.handleClick= this.handleClick.bind(this);
+        // this.handleClick= this.handleClick.bind(this);
     }
 
     tileStatus () {
-        if (this.state.flagged) {
-            return "🚩";
-        } else if (this.state.bombed) {
-            return "";
-        }
-    } //💣"
+       
+    } //
     
 
     handleClick(e){
-        debugger
-        if (e.currentTarget.bombed){
+        // debugger
+        if (e.currentTarget.className === "bombed"){
             
             alert("You Lost");
         }
@@ -35,7 +31,15 @@ class Tile extends React.Component {
 
     render () {
         // debugger
-        return <div onClick = {() => this.handleClick(e)}>{this.tileStatus()}</div>
+        let x, tileStatus;
+        if (this.state.flagged) {
+            x = "flagged"
+            tileStatus = "🚩";
+        } else if (this.state.bombed) {
+            x = "bombed";
+            tileStatus = "💣";
+        }
+        return <div className={x} onClick={this.handleClick.bind(this)}>{tileStatus}</div>
     } 
 }
 
