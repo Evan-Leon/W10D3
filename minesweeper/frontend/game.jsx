@@ -20,8 +20,8 @@ export default class Game extends React.Component {
     render(){
         return (
             <div>
+                <h1>Game Component</h1>
                 < Board board={this.state.board} updateGame={this.updateGame} />
-
             </div>
         )
     }
