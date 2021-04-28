@@ -18,7 +18,7 @@ class Board extends React.Component {
                     return <div key={idx1} row={idx1} className="row">
                     {row.map((tile, idx2) => {
                         // debugger
-                       return <div key={idx2} className="tile"> < Tile tile={tile}  updateGame={this.props.updateGame}/> </div>
+                       return  < Tile tile={tile} key = {idx2}  updateGame={this.props.updateGame}/> 
                       
                     })}
                     

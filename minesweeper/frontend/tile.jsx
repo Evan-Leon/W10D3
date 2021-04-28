@@ -1,6 +1,7 @@
 import React from "react";
-import Minesweeper from "../minesweeper";
-// const Minesweeper = require ( "../minesweeper");
+const Minesweeper = require("../minesweeper");
+
+
 
 class Tile extends React.Component {
     constructor(props) {
@@ -12,32 +13,40 @@ class Tile extends React.Component {
             bombed: this.props.tile.bombed,
             pos: this.props.tile.pos
         }
+        this.adjacentBombCount = this.props.tile.adjacentBombCount();
         // this.handleClick= this.handleClick.bind(this);
     }
 
-    tileStatus () {
-       
-    } //
-    
-
     handleClick(e){
-        // debugger
-        if (e.currentTarget.className === "bombed"){
+        
+        if (e.currentTarget.className === "tile bombed"){
             
-            alert("You Lost");
+            alert("You Lo÷st");
+        } else {
+            this.setState({explored: true});
         }
-        this.setState()
+        if (e.altKey){
+            this.setState({flagged:true });
+        }
+        
+        
     }
 
     render () {
         // debugger
         let x, tileStatus;
         if (this.state.flagged) {
-            x = "flagged"
+            x = "tile flagged"
             tileStatus = "🚩";
         } else if (this.state.bombed) {
-            x = "bombed";
+            x = "tile bombed";
             tileStatus = "💣";
+        } else if (!this.state.explored){
+            x = "tile unexplored";
+            tileStatus = "";
+        } else if (this.state.explored){
+            x = "tile explored";
+            tileStatus = this.adjacentBombCount;
         }
         return <div className={x} onClick={this.handleClick.bind(this)}>{tileStatus}</div>
     } 
