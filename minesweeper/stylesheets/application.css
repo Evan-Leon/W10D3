@@ -30,4 +30,11 @@ span, article, footer, time, small {
     margin: 0 auto;
     height: 117px;
     border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tile {
+  display: flex;
+  justify-content: space-between;
 }

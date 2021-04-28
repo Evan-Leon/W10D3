@@ -9,21 +9,22 @@ class Board extends React.Component {
     }
 
     render () {
-        debugger
+        // debugger
         return (
             <div id="board">
+                <div className="outerRow">
                 {this.props.board.grid.map((row, idx1) => {
-                   debugger
-
-                    // {row.map((tile, idx2) => {
-                    //     debugger
-                    //    return <div key={idx2}> < Tile tile={tile}  updateGame={this.props.updateGame}/> </div>
+                //    debugger
+                    return <div key={idx1} row={idx1} className="row">
+                    {row.map((tile, idx2) => {
+                        // debugger
+                       return <div key={idx2}> < Tile tile={tile}  updateGame={this.props.updateGame}/> </div>
                       
-                    // })}
+                    })}
                     
-                    return <div key={idx1} row={idx1} className="row">  </div>
+                    </div>
                 })} 
-                
+                </div>
             </div>
         )
     }
