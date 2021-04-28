@@ -12,19 +12,30 @@ class Tile extends React.Component {
             bombed: this.props.tile.bombed,
             pos: this.props.tile.pos
         }
+        this.handleClick= this.handleClick.bind(this);
     }
 
     tileStatus () {
         if (this.state.flagged) {
             return "🚩";
         } else if (this.state.bombed) {
-            return "💣";
+            return "";
         }
+    } //💣"
+    
+
+    handleClick(e){
+        debugger
+        if (e.currentTarget.bombed){
+            
+            alert("You Lost");
+        }
+        this.setState()
     }
 
     render () {
         // debugger
-        return <p>{this.tileStatus()}</p>
+        return <div onClick = {() => this.handleClick(e)}>{this.tileStatus()}</div>
     } 
 }
 
